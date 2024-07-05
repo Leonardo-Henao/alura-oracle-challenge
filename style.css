@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --cl-primary: #0a3871;
+  --cl-secondary: #d8dfe8;
+  --cl-bg-secondary: rgb(163, 158, 168, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+textarea {
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+nav,
+main {
+  padding: 1rem;
+}
+
+.key_button_tooltip {
+  position: absolute;
+  right: -0.3rem;
+  top: -0.8rem;
+  padding: 0 0.3rem;
+  border: 1px solid var(--cl-primary);
+  border-radius: 0.2rem;
+  color: var(--cl-primary);
+  background-color: var(--cl-secondary);
+  font-size: 0.8rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+textarea {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  width: 98%;
+  height: 30vh;
+  border: none;
+}
+
+aside {
+  width: 100%;
+}
+
+#text_to_convert {
+  color: var(--cl-primary);
+  background-color: var(--cl-bg-secondary);
+}
+
+#text_from_convert {
+  background-color: var(--cl-secondary);
+}
+
+#section_entry {
+  position: relative;
+}
+
+#btn_message_info {
+  position: absolute;
+  color: gray;
+  top: 0.5rem;
+  right: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+#section_entry .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#btn_encrypt,
+#btn_dencrypt,
+#btn_clean,
+#btn_copy {
+  padding: 0.8rem 3%;
+  border: 1px solid var(--cl-primary);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+#btn_encrypt:hover,
+#btn_dencrypt:hover,
+#btn_clean:hover,
+#btn_copy:hover {
+  box-shadow: 1px 1px 4px var(--cl-primary);
+  cursor: pointer;
+}
+
+#section_entry button:nth-child(1) {
+  background-color: var(--cl-primary);
+  color: white;
+}
+
+#section_entry button:nth-child(2) {
+  background-color: var(--cl-secondary);
+  color: var(--cl-primary);
+}
+
+#section_entry button:nth-child(3) {
+  padding: 0.8rem 1rem;
+}
+
+#section_entry button:nth-child(3) img {
+  width: 1rem;
+}
+
+/* Aside */
+
+aside #no_data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+aside #no_data h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+aside #no_data h3 {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+/* Toast */
+
+#toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  background: var(--cl-primary);
+  box-shadow: 1px 1px 4px var(--cl-primary);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  display: none;
+  transition: display 1s ease-in-out;
+}
+
+#toast[show='true'] {
+  display: block;
+  animation: enter_toast 0.2s linear;
+}
+
+#toast[show='false'] {
+  display: none;
+}
+
+@keyframes enter_toast {
+  0% {
+    transform: translateX(100%);
+  }
+
+  90% {
+    transform: translateX(-30%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#section_output {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#btn_copy {
+  color: var(--cl-primary);
+}
+
+transitions-anim {
+  position: relative;
+}
+
+#transitions-anim .loader {
+  --width: 30px;
+  --height: 3px;
+  --animation-loader: 3s;
+
+  width: var(--width);
+  height: var(--height);
+  background-color: var(--cl-secondary);
+  z-index: 11;
+  position: absolute;
+  top: calc(50% - var(--height));
+  left: calc(50% - var(--width) / 2);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  animation: loader var(--animation-loader) linear 1;
+}
+
+@keyframes loader {
+  to {
+    --width: 100vw;
+    width: var(--width);
+    left: calc(50% - var(--width) / 2);
+  }
+}
+
+#transitions-anim::after,
+#transitions-anim::before {
+  --animation-loader: 3s;
+
+  content: '';
+  width: 100vw;
+  height: 50vh;
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  left: 0;
+  background-color: var(--cl-primary);
+  z-index: 10;
+  box-sizing: border-box;
+
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#transitions-anim::before {
+  background-image: url('./images/diamod.png');
+  background-repeat: no-repeat;
+  background-position-y: 80%;
+  background-position-x: calc(50vw - 45px);
+  top: 0;
+
+  animation: translate_to_top 3s linear forwards;
+  animation-delay: var(--animation-loader);
+}
+
+#transitions-anim::after {
+  content: 'Bienvenidos al challenge de Alura + Oracle - Encryptador';
+  padding: 1rem;
+
+  color: white;
+  bottom: 0;
+  animation: translate_to_bottom 3s linear forwards;
+  animation-delay: var(--animation-loader);
+}
+
+@keyframes translate_to_top {
+  to {
+    top: -100%;
+  }
+}
+
+@keyframes translate_to_bottom {
+  to {
+    bottom: -100%;
+  }
+}
+
+.keys_information {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: gray;
+  opacity: 0.7;
+  padding: 0.5rem;
+}
+
+footer {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 2rem;
+
+  color: var(--cl-primary);
+  background-image: linear-gradient(to right, var(--cl-primary), #212121);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  #section_entry {
+    grid-area: 1 / 1 / 3 / 4;
+  }
+
+  aside {
+    grid-area: 1 / 4 / 3 / 6;
+  }
+
+  textarea {
+    height: 50vh;
+  }
+}

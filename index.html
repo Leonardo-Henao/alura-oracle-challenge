@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Leonardo Henao" />
+    <meta name="description" content="Encriptador de texto" />
+    <meta name="theme-color" content="#0a3871" />
+    <title>Encriptador - Leonardo Henao - Alura</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <img src="images/Logo.png" alt="Logo alura" />
+    </nav>
+    <main>
+      <div id="section_entry">
+        <textarea id="text_to_convert" placeholder="Ingrese el texto aquí"></textarea>
+        <button id="btn_message_info" onclick="showTextAlertHandler()">
+          <img src="images/alert.svg" alt="icon alerta" title="Solo letras sin acentos" />
+        </button>
+        <div class="buttons">
+          <button id="btn_encrypt" onclick="encryptHandler()">Encriptar</button>
+          <button id="btn_dencrypt" onclick="decryptHandler()">Desencriptar</button>
+          <button id="btn_clean" onclick="cleanAllHandler()">
+            <img src="images/clear-all.svg" alt="icon clean all textarea" />
+          </button>
+        </div>
+      </div>
+      <aside>
+        <div id="section_output">
+          <textarea id="text_from_convert"></textarea>
+          <button id="btn_copy" onclick="copyTextHandler()">Copiar</button>
+        </div>
+        <div id="no_data">
+          <img src="images/Muñeco.png" alt="muñeco de no se encontro mensajes" />
+          <div>
+            <h2>Ningún mensaje fue encontrado</h2>
+            <h3>Ingresa el texto que desees encriptar o desencriptar</h3>
+          </div>
+        </div>
+      </aside>
+    </main>
+    <div id="toast" show="false">Message toast</div>
+    <div id="transitions-anim">
+      <div class="loader"></div>
+    </div>
+    <span class="keys_information">Presiona [ K ] para ver y ocultar los atajos de teclado</span>
+    <footer>Creado por <a href="https://leonardohenao.com" target="_blank">Leonardo Henao</a></footer>
+  </body>
+  <script src="script.js"></script>
+</html>
