@@ -69,7 +69,7 @@ const decrypt = () => {
 
 /**
  * Set result to TexAreaOutput
- * @param [string] text to show
+ * @param result [string] text to show
  */
 const setResultToTextAreaOutput = (result) => {
   texAreaOutput.value = result;
@@ -134,6 +134,28 @@ const getTextAreaValue = () => texAreaEntry.value.toString().toLowerCase();
  * @returns [boolean] with value if empty or not
  */
 const textAreaIsEmpty = () => !texAreaEntry.value.length > 0;
+
+/**
+ * Check theme in localStorage
+ */
+const checkTheme = () => {
+  const valueLocal = localStorage.getItem('t');
+  valueLocal != undefined && document.body.setAttribute('theme', valueLocal);
+};
+
+/**
+ * Change theme
+ */
+const changeTheme = () => {
+  const theme = document.body.getAttribute('theme');
+  if (theme === 'light') {
+    document.body.setAttribute('theme', 'dark');
+    localStorage.setItem('t', 'dark');
+  } else {
+    document.body.setAttribute('theme', 'light');
+    localStorage.setItem('t', 'light');
+  }
+};
 
 /**
  * Show a toast message
@@ -223,3 +245,5 @@ const appendChildTooltips = () => {
 setTimeout(() => {
   getById('transitions-anim').style.display = 'none';
 }, 6300);
+
+checkTheme();
